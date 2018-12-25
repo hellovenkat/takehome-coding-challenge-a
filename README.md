@@ -78,6 +78,20 @@ Thank you and good luck!
 3. 'ng serve --open  --host 0.0.0.0  --disable-host-check' - starts the server
 
 ## link to the live site
+
 https://galliambic-things.000webhostapp.com
 
 ## A paragraph or two about what you are particularly proud of in your implementation, and why.
+
+Two things for which I am proud are: Implementation of idea(Ease of use) and Material Design.
+
+Implementation of idea: I have kept the implementation as simple as possible, so that the client can use it easily. There is a side-navigation bar and main page area. Any action done through the navigation panel will be reflected on the page area.
+
+Material Design: I have used the Angular Material for the UI implementation. It adheres to the UI/UX design standards and makes the application look more sophisticated. Also, the app works well in the mobile beacause of the side-navigation breakpoint.
+
+Things that I have not done: I have only done the capabilities of Adding, Deleting, Editing the targets. I have not done much to make the application configurable in the given time.
+The idea behind the Configurations tab in the side navigation panel is to give the client capabilities to configure on how he views the targets.
+For example, the current configuration that he can give is the Color assignment for the Current Status of the target - Red for declined, Green for Approved etc..
+Other implementation idea is the value of Financial performance(which is now an input value that is being given by clilent while adding a target). A good way to implement it would be to run some logic that can configured by the client with the parameters that influence the Financial performance and determining its value based on that.
+
+
