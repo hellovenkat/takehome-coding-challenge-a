@@ -1,0 +1,17 @@
+<div *ngIf="configs">
+    <mat-card class="example-card">
+        <h3>Current Color Configurations for Status</h3>
+        <mat-card-content>
+
+            <div *ngFor="let item of configs['allColors']">
+
+                <mat-label>{{item.currentstatus}}:</mat-label>&nbsp;&nbsp;&nbsp;
+                <mat-form-field>
+                    <input matInput value="{{item.color}}" [(colorPicker)]="item.color" />
+                </mat-form-field>
+            </div>
+            <button mat-raised-button color="primary" type="submit" (click)="saveConfig(configs)">Save</button> &nbsp;&nbsp;
+
+        </mat-card-content>
+    </mat-card>
+</div>

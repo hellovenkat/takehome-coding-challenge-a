@@ -1,0 +1,49 @@
+<div *ngIf="target">
+    <mat-card class="example-card">
+        <h3>Edit details</h3>
+        <mat-card-content>
+            <form class="form-container">
+                <mat-form-field>
+                    <input matInput [ngModelOptions]="{standalone: true}" placeholder="Name of the Target Company" ngModel [(ngModel)]="target.name" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-select placeholder="Status" [ngModelOptions]="{standalone: true}" [(ngModel)]="target.currentstatus" [(value)]="target.currentstatus">
+                        <mat-option value="Research in Progress">Research in Progress</mat-option>
+                        <mat-option value="Pending">Pending Approval</mat-option>
+                        <mat-option value="Approved">Approved</mat-option>
+                        <mat-option value="Declined">Declined</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <textarea matInput [ngModelOptions]="{standalone: true}" placeholder="Company Info" [(ngModel)]="target.companyinfo" required></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [ngModelOptions]="{standalone: true}" placeholder="Financial Performance" [(ngModel)]="target.financialperformance" required>
+                </mat-form-field>
+                <h3>Key Contacts</h3>
+                <div *ngIf="target.keycontacts">
+                    <div *ngFor="let contact of target.keycontacts">
+
+                        <mat-form-field style="width:32%">
+                            <input matInput [ngModelOptions]="{standalone: true}" placeholder="Contact Name" [(ngModel)]="contact.contactname" required/>
+                        </mat-form-field>
+                        &nbsp;&nbsp;
+                        <mat-form-field style="width:32%">
+                            <input matInput [ngModelOptions]="{standalone: true}" placeholder="Designation" [(ngModel)]="contact.designation" required/>
+                        </mat-form-field>
+                        &nbsp;&nbsp;
+                        <mat-form-field style="width:32%">
+                            <input matInput [ngModelOptions]="{standalone: true}" placeholder="Phone Number" [(ngModel)]="contact.phone" required/>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+                <mat-action-row>
+                    <button mat-raised-button color="primary" (click)="saveTarget()">Save Target</button>&nbsp;&nbsp;
+                    <button mat-raised-button color="primary" (click)="goBack()">Cancel</button>
+                </mat-action-row>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

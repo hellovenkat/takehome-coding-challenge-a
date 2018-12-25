@@ -1,0 +1,44 @@
+<mat-card class="example-card">
+    <h3>Details of new Target</h3>
+    <mat-card-content>
+        <form class="form-container" [formGroup]="addTargetForm" (ngSubmit)="addTargetForm.valid && addTarget(user)" novalidate>
+
+            <mat-form-field>
+                <input id="name" matInput formControlName="name" [(ngModel)]="user.name" placeholder="Name of the Company" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select formControlName="currentstatus" placeholder="Current Status" [(value)]="user.currentstatus">
+                    <mat-option value="Research in Progress">Research in Progress</mat-option>
+                    <mat-option value="Pending">Pending Approval</mat-option>
+                    <mat-option value="Approved">Approved</mat-option>
+                    <mat-option value="Declined">Declined</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <textarea id="companyinfo" matInput formControlName="companyinfo" [(ngModel)]="user.companyinfo" placeholder="Add some description about the Company"></textarea>
+            </mat-form-field>
+            <div formArrayName="keycontacts" *ngFor="let item of addTargetForm.get('keycontacts')['controls']; let i = index;">
+                <div [formGroupName]="i">
+                    <mat-form-field><input matInput formControlName="contactname" placeholder="Name" required></mat-form-field>
+                    &nbsp;&nbsp;
+                    <mat-form-field><input matInput formControlName="designation" placeholder="Designation" required></mat-form-field>
+                    &nbsp;&nbsp;
+                    <mat-form-field><input matInput formControlName="phone" placeholder="Phone Number" required></mat-form-field>
+                    &nbsp;&nbsp;<button mat-raised-button color="primary" (click)="addItem()">Add Contact</button><br>
+                </div>
+
+            </div>
+
+
+            <mat-form-field>
+                <input id="financialperformance" matInput formControlName="financialperformance" [(ngModel)]="user.financialperformance" placeholder="Performance of the Company" />
+            </mat-form-field>
+
+            <mat-action-row>
+                <button mat-raised-button color="primary" type="submit" (click)="goBack()" [disabled]="!addTargetForm.valid">Register</button> &nbsp;&nbsp;
+                <button mat-raised-button color="warn" type="submit" (click)="goBack()">Cancel</button>
+            </mat-action-row>
+
+        </form>
+    </mat-card-content>
+</mat-card>
