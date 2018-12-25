@@ -64,3 +64,20 @@ Please modify README.md to add:
 5. You should email your recruiter to let them know you had submitted a solution. Make sure to include your github username in your email (so we can match applicants with pull requests).
 
 Thank you and good luck!
+
+
+
+
+
+--------------------------------------------------
+
+## Instructions on how to build/run your application
+
+1. clone the project repository 
+2. Run the command 'npm install' in the terminal after navigating to the project folder - installs the dependencies in node_modules folder
+3. 'ng serve --open  --host 0.0.0.0  --disable-host-check' - starts the server
+
+## link to the live site
+https://galliambic-things.000webhostapp.com
+
+## A paragraph or two about what you are particularly proud of in your implementation, and why.
