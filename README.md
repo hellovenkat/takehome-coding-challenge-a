@@ -79,7 +79,7 @@ Thank you and good luck!
 
 ## link to the live site
 
-https://galliambic-things.000webhostapp.com
+https://ey-test-app.000webhostapp.com
 
 ## A paragraph or two about what you are particularly proud of in your implementation, and why.
 
