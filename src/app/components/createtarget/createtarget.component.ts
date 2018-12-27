@@ -9,6 +9,7 @@ import { GettargetsService } from '../../services/gettargets/gettargets.service'
 import { TargetBinder } from '@angular/compiler';
 import { InMemoryDataService } from '../../db/in-memory-data.service';
 import { Location } from '@angular/common';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -28,7 +29,8 @@ export class CreatetargetComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private targetService: GettargetsService,
     private inMemoryService: InMemoryDataService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) { }
   
   ngOnInit() {
@@ -79,6 +81,7 @@ export class CreatetargetComponent implements OnInit {
       this.targetService.addTarget(target as Target).subscribe(target => {
         this.targets.push(target);
     });
+    this.router.navigateByUrl("/dashboard");
   }
   goBack(): void {
     this.location.back();
