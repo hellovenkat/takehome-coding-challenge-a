@@ -13,7 +13,7 @@ import { IndivConfig } from '../../models/indivconfig';
 export class NewtargetComponent implements OnInit {
   temp:null;
   targets: Target[];
-  configs: Config;
+  configs: Config[];
   constructor(private getTargetsService: GettargetsService) { }
   ngOnInit() {
     this.getTargets();
@@ -41,6 +41,7 @@ export class NewtargetComponent implements OnInit {
         "float": "right",
         "color":"red"
       }
+      //console.log("new target:"+this.configs);
       let arr = this.configs["allColors"];
       var _obDup=new IndivConfig();
       arr.forEach(function(element){
@@ -59,7 +60,7 @@ export class NewtargetComponent implements OnInit {
   }
   getConfigs(): void {
     this.getTargetsService.getConfigs()
-        .subscribe(configs => this.configs = configs);
+        .subscribe(configs => this.configs = configs[0]);
   }
   delete(target: Target): void {
     this.targets = this.targets.filter(h => h !== target);

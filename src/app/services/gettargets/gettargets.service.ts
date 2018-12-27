@@ -15,11 +15,7 @@ export class GettargetsService {
   private targetsUrl = 'api/targets';
   private configsUrl = 'api/configs';  // URL to web api
   constructor(private http: HttpClient) { }
-  getConfigs(): Observable<any> {
-    return this.http.get<Config>(this.configsUrl)
-    .pipe(
-    );
-  }
+
   getTargets(): Observable<Target[]> {
     return this.http.get<Target[]>(this.targetsUrl)
     .pipe(
@@ -44,12 +40,6 @@ addTarget (target: Target): Observable<Target> {
 
   );
 }
-/**  TO DO: Have to work on this: the method throws error in-memory db api */
-editConfig (configs: Config): Observable<any> {
-    return this.http.put(this.configsUrl, configs, httpOptions).pipe(
-    catchError(this.handleError<any>('updateConfig'))
-  );
-}
 deleteTarget (target: Target | number): Observable<Target> {
   const id = typeof target === 'number' ? target : target.id;
   const url = `${this.targetsUrl}/${id}`;
@@ -58,7 +48,19 @@ deleteTarget (target: Target | number): Observable<Target> {
     catchError(this.handleError<Target>('deleteTarget'))
   );
 }
-
+getConfigs(): Observable<any> {
+  return this.http.get<Config>(this.configsUrl)
+  .pipe(
+    catchError(this.handleError('getConfigs', []))
+  );
+}
+/**  TO DO: Have to work on this: the method throws error in-memory db api */
+editConfig (configs: Config): Observable<any> {
+  //console.log("service:"+configs );
+  return this.http.put(this.configsUrl, configs, httpOptions).pipe(
+  catchError(this.handleError<any>('updateConfig'))
+);
+}
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
  

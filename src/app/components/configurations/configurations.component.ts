@@ -11,7 +11,7 @@ import { IndivConfig } from '../../models/indivconfig';
 })
 export class ConfigurationsComponent implements OnInit {
 
-  configs: Config;
+  configs: Config[];
   constructor(private getTargetsService: GettargetsService,
   private location: Location
   ) { }
@@ -23,13 +23,12 @@ export class ConfigurationsComponent implements OnInit {
     this.getTargetsService.getConfigs()
         .subscribe(configs => this.configs = configs);
   }
-  saveConfig(configs){
-
-      console.log(configs);
-      this.getTargetsService.editConfig(configs)
+  saveConfig(){
+    //console.log(this.configs);
+    this.getTargetsService.editConfig(this.configs[0])
       .subscribe(() => this.goBack());
-    }
-    goBack(): void {
-      this.location.back();
-    }
+  }
+  goBack(): void {
+    this.location.back();
+  }
 }

@@ -56,7 +56,7 @@ export class InMemoryDataService implements InMemoryDbService{
       financialperformance: 'OK' }
 
     ];
-    const configs ={
+    const configs =[{
       id:1,
       allColors:[
         {
@@ -76,7 +76,7 @@ export class InMemoryDataService implements InMemoryDbService{
               color: 'Blue'
               },
       ]
-    };
+    }];
     return {targets,configs};
   }
 
