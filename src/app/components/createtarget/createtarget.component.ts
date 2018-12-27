@@ -68,6 +68,10 @@ export class CreatetargetComponent implements OnInit {
     console.log(this.keycontacts);
     this.keycontacts.push(this.createItem());
   }
+  //TO:DO
+  deleteItem(): void {
+
+  }
   getTargets(): void {
     this.targetService.getTargets()
         .subscribe(targets => this.targets = targets);
