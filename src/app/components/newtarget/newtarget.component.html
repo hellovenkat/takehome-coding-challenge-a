@@ -23,7 +23,15 @@
                 <mat-list-item>
                     <mat-icon mat-list-icon>account_balance</mat-icon>
                     <p mat-line>Current Status - {{item.currentstatus}}</p>
-                    <p mat-line> Financial Performance - {{item.financialperformance}} </p>
+                    <!-- <p mat-line> Financial Performance - {{item.financialperformance}} </p> -->
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <h3 mat-subheader>Financial Performance - {{item.financialperformance}} </h3>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>attach_money</mat-icon>
+                    <p mat-line> Revenue Growth - {{item.revenuefactor}} </p>
+                    <p mat-line> Profit Growth - {{item.profitfactor}} </p>
+                    <p mat-line> Investment Growth - {{item.investmentfactor}} </p>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <h3 mat-subheader>Contact Information</h3>
@@ -44,3 +52,6 @@
         </mat-expansion-panel>
     </div>
 </mat-list>
+<!-- <div *ngIf="configs">
+    {{configs[1]["fp_ig"]}}
+</div> -->

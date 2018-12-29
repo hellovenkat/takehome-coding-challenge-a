@@ -1,17 +1,56 @@
-<div *ngIf="configs">
-    <mat-card class="example-card">
-        <h3>Current Color Configurations for Status</h3>
-        <mat-card-content>
+<!--  -->
+<!-- <div *ngIf="chart"> -->
+<div>
+    <mat-tab-group>
+        <mat-tab label="Change Colors">
+            <div *ngIf="configs">
+                <mat-card class="example-card">
+                    <h3>Current Color Configurations for Status</h3>
+                    <mat-card-content>
 
-            <div *ngFor="let item of configs[0]['allColors']">
+                        <div *ngFor="let item of configs[0]['allColors']">
 
-                <mat-label>{{item.currentstatus}}:</mat-label>&nbsp;&nbsp;&nbsp;
-                <mat-form-field>
-                    <input matInput value="{{item.color}}" [(colorPicker)]="item.color" [cpPosition]="'bottom'" />
-                </mat-form-field>
+                            <mat-label>{{item.currentstatus}}:</mat-label>&nbsp;&nbsp;&nbsp;
+                            <mat-form-field>
+                                <input matInput value="{{item.color}}" [(colorPicker)]="item.color" [cpPosition]="'bottom'" />
+                            </mat-form-field>
+                        </div>
+                        <button mat-raised-button color="primary" type="submit" (click)="saveConfig()">Save</button> &nbsp;&nbsp;
+
+                    </mat-card-content>
+                </mat-card>
             </div>
-            <button mat-raised-button color="primary" type="submit" (click)="saveConfig()">Save</button> &nbsp;&nbsp;
 
-        </mat-card-content>
-    </mat-card>
+
+        </mat-tab>
+        <mat-tab label="Financial Performance">
+            <div *ngIf="configs">
+                <mat-card class="example-card">
+                    <h3>Current Configurations for Financial Performance</h3>
+                    <mat-card-content>
+
+
+                        <mat-label>Revenue Growth:</mat-label>&nbsp;&nbsp;&nbsp;
+                        <mat-form-field>
+                            <input matInput value="{{configs[1]['fp_rg']}}" [(ngModel)]="configs[1]['fp_rg']" />
+                        </mat-form-field><br>
+                        <mat-label>Profit Growth:</mat-label>&nbsp;&nbsp;&nbsp;
+                        <mat-form-field>
+                            <input matInput value="{{configs[1]['fp_pg']}}" [(ngModel)]="configs[1]['fp_pg']" />
+                        </mat-form-field><br>
+                        <mat-label>Investment Growth:</mat-label>&nbsp;&nbsp;&nbsp;
+                        <mat-form-field>
+                            <input matInput value="{{configs[1]['fp_ig']}}" [(ngModel)]="configs[1]['fp_ig']" />
+                        </mat-form-field><br>
+
+                        <button mat-raised-button color="primary" type="submit" (click)="saveFinConfig()">Save</button> &nbsp;&nbsp;
+
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+    <!-- <canvas id="myChart"></canvas> -->
+
 </div>
+<!-- </div> -->

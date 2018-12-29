@@ -5,6 +5,9 @@ export class Target {
    currentstatus: string;
    companyinfo: string;
    keycontacts: Array<Contact>;
+   revenuefactor: number;
+   profitfactor: number;
+   investmentfactor: number;
    financialperformance: string ;
    color:string
 }

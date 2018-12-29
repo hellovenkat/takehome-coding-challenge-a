@@ -19,8 +19,10 @@ export class NewtargetComponent implements OnInit {
     this.getTargets();
     this.getConfigs();
     setTimeout(() => {
-    this.setcolors();      
+    this.setcolors();
+    this.loadFin();      
     }, 500);
+
   }
   setcolors(){
       this.targets.forEach(target => {
@@ -34,6 +36,18 @@ export class NewtargetComponent implements OnInit {
     });
     
   }
+  loadFin(){
+    console.log(this.configs[1]["fp_rg"]);
+    this.targets.forEach(element => {
+      var financial_value = (this.configs[1]["fp_pg"]*element.profitfactor)+(this.configs[1]["fp_rg"]*element.revenuefactor)+(this.configs[1]["fp_ig"]*element.investmentfactor);
+      if(financial_value>70){
+        element.financialperformance = 'Good';
+      }
+      else{
+        element.financialperformance = 'Average';
+      }
+    });
+  }
   getStyle(item){
     if(item.color){
       var _obj = {
@@ -42,7 +56,7 @@ export class NewtargetComponent implements OnInit {
         "color":"red"
       }
       //console.log("new target:"+this.configs);
-      let arr = this.configs["allColors"];
+      let arr = this.configs[0]["allColors"];
       var _obDup=new IndivConfig();
       arr.forEach(function(element){
         if(item.currentstatus == element.currentstatus){
@@ -57,10 +71,11 @@ export class NewtargetComponent implements OnInit {
   getTargets(): void {
     this.getTargetsService.getTargets()
         .subscribe(targets => this.targets = targets);
+    
   }
   getConfigs(): void {
     this.getTargetsService.getConfigs()
-        .subscribe(configs => this.configs = configs[0]);
+        .subscribe(configs => this.configs = configs);
   }
   delete(target: Target): void {
     this.targets = this.targets.filter(h => h !== target);

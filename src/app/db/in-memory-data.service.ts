@@ -23,7 +23,10 @@ export class InMemoryDataService implements InMemoryDbService{
         phone: '8809828878'
       }],
       companyinfo: 'Top IT firm in New York',
-      financialperformance: 'OK' },
+      financialperformance: 'OK' ,
+      revenuefactor: 70,
+      profitfactor: 65,
+      investmentfactor: 80},
     { id: 2,
       name: 'ABC Research Company',
       currentstatus: 'Approved',
@@ -33,7 +36,10 @@ export class InMemoryDataService implements InMemoryDbService{
         phone: '8049457823'
       }],
       companyinfo: 'Potential target with good future returns',
-      financialperformance: 'OK' },
+      financialperformance: 'OK',
+      revenuefactor: 70,
+      profitfactor: 75,
+      investmentfactor: 50 },
     { id: 3,
       name: 'CBS Television Company',
       currentstatus: 'Pending',
@@ -43,7 +49,10 @@ export class InMemoryDataService implements InMemoryDbService{
         phone: '8034895603'
       }],
       companyinfo: 'A safe investment with average returns',
-      financialperformance: 'OK' },
+      financialperformance: 'OK',
+      revenuefactor: 65,
+      profitfactor: 60,
+      investmentfactor: 75 },
     { id: 4,
       name: 'Manpower Construction Company',
       currentstatus: 'Research in Progress',
@@ -53,7 +62,10 @@ export class InMemoryDataService implements InMemoryDbService{
         phone: '9087854923'
       }],
       companyinfo: 'A key player in the Construction sector',
-      financialperformance: 'OK' }
+      financialperformance: 'OK',
+      revenuefactor: 65,
+      profitfactor: 60,
+      investmentfactor: 75 }
 
     ];
     const configs =[{
@@ -76,7 +88,14 @@ export class InMemoryDataService implements InMemoryDbService{
               color: 'Blue'
               },
       ]
-    }];
+    },
+    {
+      id:2,
+      fp_rg: 0.4,
+      fp_pg: 0.3,
+      fp_ig: 0.3 
+    }
+  ];
     return {targets,configs};
   }
 

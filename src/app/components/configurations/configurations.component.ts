@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GettargetsService } from '../../services/gettargets/gettargets.service';
 import { Config } from '../../models/config';
 import { Location } from '@angular/common';
+import { Chart } from 'chart.js';
 import { IndivConfig } from '../../models/indivconfig';
 
 @Component({
@@ -18,6 +19,8 @@ export class ConfigurationsComponent implements OnInit {
 
   ngOnInit() {
     this.getConfigs();
+
+
   }
   getConfigs(): void {
     this.getTargetsService.getConfigs()
@@ -28,7 +31,13 @@ export class ConfigurationsComponent implements OnInit {
     this.getTargetsService.editConfig(this.configs[0])
       .subscribe(() => this.goBack());
   }
+  saveFinConfig(){
+    //console.log(this.configs);
+    this.getTargetsService.editFinConfig(this.configs[1])
+      .subscribe(() => this.goBack());
+  }
   goBack(): void {
     this.location.back();
   }
+  
 }
