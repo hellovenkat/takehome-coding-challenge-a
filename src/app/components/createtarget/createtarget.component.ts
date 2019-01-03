@@ -6,7 +6,6 @@ import { FormBuilder, FormArray } from '@angular/forms';
 import { Target } from '../../models/target';
 import { Contact } from '../../models/contact';
 import { GettargetsService } from '../../services/gettargets/gettargets.service'
-import { TargetBinder } from '@angular/compiler';
 import { InMemoryDataService } from '../../db/in-memory-data.service';
 import { Location } from '@angular/common';
 import {Router} from '@angular/router';
@@ -48,8 +47,20 @@ export class CreatetargetComponent implements OnInit {
         'companyinfo': [this.user.companyinfo, [
           Validators.required
         ]],
-        'financialperformance': [this.user.financialperformance, [
-          Validators.required
+        'revenuefactor': [this.user.revenuefactor, [
+          Validators.required,
+          Validators.min(0),
+          Validators.max(100)
+        ]],
+        'profitfactor': [this.user.profitfactor, [
+          Validators.required,
+          Validators.min(0),
+          Validators.max(100)
+        ]],
+        'investmentfactor': [this.user.investmentfactor, [
+          Validators.required,
+          Validators.min(0),
+          Validators.max(100)
         ]],
         keycontacts: this.fb.array([ this.createItem() ])
       });
@@ -77,7 +88,6 @@ export class CreatetargetComponent implements OnInit {
   addTarget(target)
   {
     this.patch();
-    console.log("in add target:"+target.keycontacts);
       this.targetService.addTarget(target as Target).subscribe(target => {
         this.targets.push(target);
     });

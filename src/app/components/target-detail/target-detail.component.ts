@@ -41,7 +41,6 @@ export class TargetDetailComponent implements OnInit {
   }
   deleteContactFromTarget(contact): void{
     const id = typeof contact === 'number' ? contact : contact.id; 
-    alert(id);
     if (id !== -1) {
       this.target.keycontacts.splice(id-1, 1);
     }  

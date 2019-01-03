@@ -21,6 +21,7 @@ import { InMemoryDataService }  from './db/in-memory-data.service';
 import {MatCardModule} from '@angular/material/card';
 import { ConfigurationsComponent } from './components/configurations/configurations.component';
 import { ColorPickerModule } from 'ngx-color-picker';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
     MatButtonModule,
     MatCheckboxModule,
     MatSidenavModule,
+    MatTabsModule,
     LayoutModule,
     MatToolbarModule,
     MatIconModule,

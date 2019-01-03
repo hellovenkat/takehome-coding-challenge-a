@@ -61,6 +61,12 @@ editConfig (configs: Config): Observable<any> {
   catchError(this.handleError<any>('updateConfig'))
 );
 }
+editFinConfig (x): Observable<any> {
+  //console.log("service:"+configs );
+  return this.http.put(this.configsUrl, x, httpOptions).pipe(
+  catchError(this.handleError<any>('updateFinConfig'))
+);
+}
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
  

@@ -1,17 +1,73 @@
-<div *ngIf="configs">
-    <mat-card class="example-card">
-        <h3>Current Color Configurations for Status</h3>
-        <mat-card-content>
-
-            <div *ngFor="let item of configs[0]['allColors']">
-
-                <mat-label>{{item.currentstatus}}:</mat-label>&nbsp;&nbsp;&nbsp;
-                <mat-form-field>
-                    <input matInput value="{{item.color}}" [(colorPicker)]="item.color" [cpPosition]="'bottom'" />
-                </mat-form-field>
+<div>
+    <mat-tab-group>
+        <mat-tab label="Change Colors">
+            <div *ngIf="configs">
+                <mat-card class="example-card">
+                    <h3> Color Configurations for Status</h3>
+                    <mat-card-content>
+                        <div *ngFor="let item of configs[0]['allColors']">
+                            <mat-label>{{item.currentstatus}}:</mat-label>&nbsp;&nbsp;&nbsp;
+                            <mat-form-field>
+                                <input matInput value="{{item.color}}" [(colorPicker)]="item.color" [cpPosition]="'bottom'" />
+                            </mat-form-field>
+                        </div>
+                        <button mat-raised-button color="primary" type="submit" (click)="saveConfig()">Save</button> &nbsp;&nbsp;
+                        <button mat-raised-button type="button" color="warn" routerLink="/dashboard">Cancel</button>
+                    </mat-card-content>
+                </mat-card>
             </div>
-            <button mat-raised-button color="primary" type="submit" (click)="saveConfig()">Save</button> &nbsp;&nbsp;
+        </mat-tab>
+        <mat-tab label="Weightage of Factors">
+            <div *ngIf="configs" class="form-group">
+                <form *ngIf="configs" class="form-container" [formGroup]="finConfigForm" (ngSubmit)="saveFinConfig()" novalidate>
+                    <mat-card class="example-card">
+                        <h3> Configurations of Factors impacting Financial Performance</h3>
+                        <mat-card-content>
+                            <mat-label>Revenue:</mat-label>&nbsp;&nbsp;&nbsp;
+                            <mat-form-field>
+                                <input type="number" matInput formControlName="fp_rg" value="{{configs[1]['fp_rg']}}" [(ngModel)]="configs[1]['fp_rg']" />
+                                <mat-hint>Weightage of Revenue Factor</mat-hint>
+                            </mat-form-field><br>
+                            <mat-label>Profit:</mat-label>&nbsp;&nbsp;&nbsp;
+                            <mat-form-field>
+                                <input type="number" matInput formControlName="fp_pg" value="{{configs[1]['fp_pg']}}" [(ngModel)]="configs[1]['fp_pg']" />
+                                <mat-hint>Weightage of Profit Factor</mat-hint>
+                            </mat-form-field><br>
+                            <mat-label>Investment:</mat-label>&nbsp;&nbsp;&nbsp;
+                            <mat-form-field>
+                                <input type="number" matInput formControlName="fp_ig" value="{{configs[1]['fp_ig']}}" [(ngModel)]="configs[1]['fp_ig']" />
+                                <mat-hint>Weightage of Investment Factor</mat-hint>
+                            </mat-form-field><br>
+                            <mat-error *ngIf="finConfigForm.hasError('notValid')">Max sum of the fields allowed is 100!</mat-error>
+                            <br>
+                            <button mat-raised-button [disabled]="finConfigForm.hasError('notValid')" color="primary" type="submit">Save</button> &nbsp;&nbsp;
+                            <button mat-raised-button type="button" color="warn" routerLink="/dashboard">Cancel</button>
+                        </mat-card-content>
+                    </mat-card>
+                </form>
+            </div>
+        </mat-tab>
+        <mat-tab label="Performance Indicators">
+            <div *ngIf="configs">
+                <mat-card class="example-card">
+                    <h3> Configurations for Financial Performance Indicators</h3>
+                    <mat-card-content>
+                        <div *ngFor="let ind_object of configs[2]['indicators']">
+                            <mat-form-field style="width:100px !important">
+                                <input matInput value="{{ind_object.level}}" [(ngModel)]="ind_object.level" />
+                            </mat-form-field>
+                            &nbsp; Above &nbsp;
+                            <mat-form-field style="width:100px !important">
+                                <input type="number" matInput value="{{ind_object.aboveValue}}" [(ngModel)]="ind_object.aboveValue" />
+                            </mat-form-field><br>
+                        </div>
+                        <br>
+                        <button mat-raised-button color="primary" type="submit" (click)="saveFinPerformance()">Save</button> &nbsp;&nbsp;
+                        <button mat-raised-button type="button" color="warn" routerLink="/dashboard">Cancel</button>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
 
-        </mat-card-content>
-    </mat-card>
 </div>

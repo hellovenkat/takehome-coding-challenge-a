@@ -3,14 +3,10 @@
         <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
-
-
                     <h4 mat-line>{{item.name}} - {{item.currentstatus}} &nbsp; &nbsp;
-                        <span><mat-icon mat-list-icon [ngStyle] = "getStyle(item)">fiber_manual_record</mat-icon></span>
+                        <span><mat-icon mat-list-icon [ngStyle] = "getStyle(item)">grade</mat-icon></span>
                     </h4>
-
                 </mat-panel-title>
-
             </mat-expansion-panel-header>
             <mat-list>
                 <h3 mat-subheader>About the Company</h3>
@@ -23,7 +19,16 @@
                 <mat-list-item>
                     <mat-icon mat-list-icon>account_balance</mat-icon>
                     <p mat-line>Current Status - {{item.currentstatus}}</p>
-                    <p mat-line> Financial Performance - {{item.financialperformance}} </p>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <h3 mat-subheader>Financial Performance -
+                    <mat-label title>{{item.financialperformance}} </mat-label>
+                </h3>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>attach_money</mat-icon>
+                    <p mat-line> Revenue Growth - {{item.revenuefactor}} </p>
+                    <p mat-line> Profit Growth - {{item.profitfactor}} </p>
+                    <p mat-line> Investment Growth - {{item.investmentfactor}} </p>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <h3 mat-subheader>Contact Information</h3>
@@ -35,7 +40,6 @@
                 </mat-list-item>
             </mat-list>
             <mat-action-row>
-
                 <button mat-button color="primary" routerLink="/detail/{{item.id}}">
                     <mat-icon mat-list-icon>edit</mat-icon>Edit</button>
                 <button mat-button color="warn" (click)="delete(item)">
