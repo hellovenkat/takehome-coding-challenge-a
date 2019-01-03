@@ -2,7 +2,6 @@
     <h3>Details of new Target</h3>
     <mat-card-content>
         <form class="form-container" [formGroup]="addTargetForm" (ngSubmit)="addTargetForm.valid && addTarget(user)" novalidate>
-
             <mat-form-field>
                 <input id="name" matInput formControlName="name" [(ngModel)]="user.name" placeholder="Name of the Company" />
             </mat-form-field>
@@ -28,17 +27,19 @@
                 </div>
 
             </div>
-
-
             <mat-form-field>
-                <input id="financialperformance" matInput formControlName="financialperformance" [(ngModel)]="user.financialperformance" placeholder="Performance of the Company" />
+                <input id="revenuefactor" matInput formControlName="revenuefactor" [(ngModel)]="user.revenuefactor" placeholder="Revenue Performance on a scale of 0-100" />
             </mat-form-field>
-
+            <mat-form-field>
+                <input id="profitfactor" matInput formControlName="profitfactor" [(ngModel)]="user.profitfactor" placeholder="Profit Performance on a scale of 0-100" />
+            </mat-form-field>
+            <mat-form-field>
+                <input id="investmentfactor" matInput formControlName="investmentfactor" [(ngModel)]="user.investmentfactor" placeholder="Investment Performance on a scale of 0-100" />
+            </mat-form-field>
             <mat-action-row>
-                <button mat-raised-button color="primary" type="submit" (click)="goBack()" [disabled]="!addTargetForm.valid">Register</button> &nbsp;&nbsp;
-                <button mat-raised-button color="warn" type="submit" (click)="goBack()">Cancel</button>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!addTargetForm.valid">Register</button> &nbsp;&nbsp;
+                <button mat-raised-button type="button" color="warn" routerLink="/dashboard">Cancel</button>
             </mat-action-row>
-
         </form>
     </mat-card-content>
 </mat-card>

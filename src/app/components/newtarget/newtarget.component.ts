@@ -37,16 +37,24 @@ export class NewtargetComponent implements OnInit {
     
   }
   loadFin(){
-    console.log(this.configs[1]["fp_rg"]);
     this.targets.forEach(element => {
-      var financial_value = (this.configs[1]["fp_pg"]*element.profitfactor)+(this.configs[1]["fp_rg"]*element.revenuefactor)+(this.configs[1]["fp_ig"]*element.investmentfactor);
-      if(financial_value>70){
-        element.financialperformance = 'Good';
-      }
-      else{
-        element.financialperformance = 'Average';
-      }
+      var financial_value = (this.configs[1]["fp_pg"]*(0.01)*element.profitfactor)+(this.configs[1]["fp_rg"]*(0.01)*element.revenuefactor)+(this.configs[1]["fp_ig"]*(0.01)*element.investmentfactor);
+        var indicators = this.configs[2]['indicators'];
+        for(var i in indicators){
+            if(financial_value>indicators[i].aboveValue){
+              element.financialperformance = indicators[i].level;
+              break;
+            }
+        }
     });
+  }
+  getPerformanceIndicator(financial_value){
+    var indicators = this.configs[2]['indicators'];
+    for(var i in indicators){
+        if(financial_value>i['aboveValue']){
+          return i['level'];
+        }
+    }
   }
   getStyle(item){
     if(item.color){
@@ -55,7 +63,6 @@ export class NewtargetComponent implements OnInit {
         "float": "right",
         "color":"red"
       }
-      //console.log("new target:"+this.configs);
       let arr = this.configs[0]["allColors"];
       var _obDup=new IndivConfig();
       arr.forEach(function(element){

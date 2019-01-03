@@ -6,9 +6,9 @@ import { FormBuilder, FormArray } from '@angular/forms';
 import { Target } from '../../models/target';
 import { Contact } from '../../models/contact';
 import { GettargetsService } from '../../services/gettargets/gettargets.service'
-import { TargetBinder } from '@angular/compiler';
 import { InMemoryDataService } from '../../db/in-memory-data.service';
 import { Location } from '@angular/common';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -28,7 +28,8 @@ export class CreatetargetComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private targetService: GettargetsService,
     private inMemoryService: InMemoryDataService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) { }
   
   ngOnInit() {
@@ -46,8 +47,20 @@ export class CreatetargetComponent implements OnInit {
         'companyinfo': [this.user.companyinfo, [
           Validators.required
         ]],
-        'financialperformance': [this.user.financialperformance, [
-          Validators.required
+        'revenuefactor': [this.user.revenuefactor, [
+          Validators.required,
+          Validators.min(0),
+          Validators.max(100)
+        ]],
+        'profitfactor': [this.user.profitfactor, [
+          Validators.required,
+          Validators.min(0),
+          Validators.max(100)
+        ]],
+        'investmentfactor': [this.user.investmentfactor, [
+          Validators.required,
+          Validators.min(0),
+          Validators.max(100)
         ]],
         keycontacts: this.fb.array([ this.createItem() ])
       });
@@ -68,10 +81,6 @@ export class CreatetargetComponent implements OnInit {
     console.log(this.keycontacts);
     this.keycontacts.push(this.createItem());
   }
-  //TO:DO
-  deleteItem(): void {
-
-  }
   getTargets(): void {
     this.targetService.getTargets()
         .subscribe(targets => this.targets = targets);
@@ -79,10 +88,10 @@ export class CreatetargetComponent implements OnInit {
   addTarget(target)
   {
     this.patch();
-    console.log("in add target:"+target.keycontacts);
       this.targetService.addTarget(target as Target).subscribe(target => {
         this.targets.push(target);
     });
+    this.router.navigateByUrl("/dashboard");
   }
   goBack(): void {
     this.location.back();

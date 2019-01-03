@@ -23,10 +23,10 @@ export class InMemoryDataService implements InMemoryDbService{
         phone: '8809828878'
       }],
       companyinfo: 'Top IT firm in New York',
-      financialperformance: 'OK' ,
+      financialperformance: 'Good' ,
       revenuefactor: 70,
-      profitfactor: 65,
-      investmentfactor: 80},
+      profitfactor: 95,
+      investmentfactor: 90},
     { id: 2,
       name: 'ABC Research Company',
       currentstatus: 'Approved',
@@ -36,10 +36,10 @@ export class InMemoryDataService implements InMemoryDbService{
         phone: '8049457823'
       }],
       companyinfo: 'Potential target with good future returns',
-      financialperformance: 'OK',
+      financialperformance: 'Good',
       revenuefactor: 70,
       profitfactor: 75,
-      investmentfactor: 50 },
+      investmentfactor: 75 },
     { id: 3,
       name: 'CBS Television Company',
       currentstatus: 'Pending',
@@ -49,7 +49,7 @@ export class InMemoryDataService implements InMemoryDbService{
         phone: '8034895603'
       }],
       companyinfo: 'A safe investment with average returns',
-      financialperformance: 'OK',
+      financialperformance: 'Average',
       revenuefactor: 65,
       profitfactor: 60,
       investmentfactor: 75 },
@@ -62,10 +62,10 @@ export class InMemoryDataService implements InMemoryDbService{
         phone: '9087854923'
       }],
       companyinfo: 'A key player in the Construction sector',
-      financialperformance: 'OK',
-      revenuefactor: 65,
-      profitfactor: 60,
-      investmentfactor: 75 }
+      financialperformance: 'Excellent',
+      revenuefactor: 85,
+      profitfactor: 83,
+      investmentfactor: 95 }
 
     ];
     const configs =[{
@@ -91,9 +91,27 @@ export class InMemoryDataService implements InMemoryDbService{
     },
     {
       id:2,
-      fp_rg: 0.4,
-      fp_pg: 0.3,
-      fp_ig: 0.3 
+      fp_rg: 40,
+      fp_pg: 30,
+      fp_ig: 30 
+    },
+    {
+      id:3,
+      indicators:[
+        {
+          level: 'Excellent',
+          aboveValue: 85
+        },
+        {
+          level: 'Good',
+          aboveValue: 75
+        },
+        {
+          level: 'Average',
+          aboveValue: 65
+        }
+
+      ]
     }
   ];
     return {targets,configs};
