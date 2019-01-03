@@ -38,7 +38,7 @@
                                 <input type="number" matInput formControlName="fp_ig" value="{{configs[1]['fp_ig']}}" [(ngModel)]="configs[1]['fp_ig']" />
                                 <mat-hint>Weightage of Investment Factor</mat-hint>
                             </mat-form-field><br>
-                            <mat-error *ngIf="finConfigForm.hasError('notValid')">Max sum of the fields allowed is 100!</mat-error>
+                            <mat-error *ngIf="finConfigForm.hasError('notValid')">Sum of the weightages should be 100!</mat-error>
                             <br>
                             <button mat-raised-button [disabled]="finConfigForm.hasError('notValid')" color="primary" type="submit">Save</button> &nbsp;&nbsp;
                             <button mat-raised-button type="button" color="warn" routerLink="/dashboard">Cancel</button>
@@ -69,5 +69,5 @@
             </div>
         </mat-tab>
     </mat-tab-group>
-
+    <!-- {{configs[1]["fp_pg"]}} -->
 </div>

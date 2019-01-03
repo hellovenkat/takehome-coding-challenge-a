@@ -61,6 +61,11 @@ export class ConfigurationsComponent implements OnInit {
     this.getTargetsService.editConfig(this.configs[0])
       .subscribe(() => this.goBack());
   }
+  saveFinConfig(){
+    //console.log("here :"+this.configs[1]);
+    this.getTargetsService.editConfig(this.configs[1])
+    .subscribe(() => this.goBack());
+  }
   saveFinPerformance(){
     this.getTargetsService.editConfig(this.configs[2])
       .subscribe(() => this.goBack());
